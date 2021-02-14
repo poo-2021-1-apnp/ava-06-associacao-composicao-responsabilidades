@@ -1,57 +1,188 @@
-# Template de Projetos Java sem Maven/Gradle configurados para o Visual Studio Code
+# Avaliação 06 Associação, Composição e Responsabilidades.
 
-Um _template_ é um projeto modelo para não iniciar do zero e ter pelo menos uma estrutura básica onde se apoiar.
+Link do Classroom: <pendente>
 
-Antes de começar a desenvolver com este _template_ é necessário ter instalado o Java Software Development Kit (JDK) 8+, o editor Visual Studio Code (VSCode)e o utilitário de controle de versão de código _Git_.
+[O treinamento cruel de Pai Mei](https://youtu.be/JOCe0isg_1E)
 
-## Instalação e Configuração do JDK
 
-É necessário instalar o JDK a partir da versão 8, porém é recomendada versão 11-LTS (Long Term Support - suporte de longo prazo).
+## Implementar e testar segundo as especificações
 
-No Windows, ele pode ser obtido aqui <https://adoptopenjdk.net/>. Siga as instruções de instalação e não esqueça de selecionar os opcionais, especialmente o _add Java to PATH_.
+- Esta atividade é avaliada com esforço estimado entre 6 e 12h.
+- Os Casos de Teste podem ser corrigidos se estiverem mal escritos, mas **a especificação dos objetos não pode ser alterada**.
+- E, por fim, assegure-se de **assistir as videoaulas antes de começar**, pois lá estão explicados todos os conceitos e práticas presentes nesta atividade.
 
-No Linux, execute no terminal o comando `sudo apt install openjdk-11-jdk` (válido para Debian, Ubuntu, Pop e Mint, por exemplo). <small>Se quiser rodar a última versão, substitua `11` por `14`.</small>
 
-Para testar a instalação, Windows ou Linux, abra o _Prompt_ de comando ou o terminal e execute o compilador Java com `javac -version`. A saída deve ser algo com `javac 11.0.9.1` ou outra sub-versão do 11.
+### Implementar Sistema Eventos/Atividades
 
-## Instalação e Configuração do VSCode
+Implementar conforme os Casos de Teste a seguir:
 
-O Visual Studio Code pode ser obtido aqui <https://code.visualstudio.com/download>. A instalação é semelhante no Windows e Linux.
+```java
+// Eventos tem um nome, cidade, tipo e ano
+// tipo é um enum públic declarado dentro da classe Evento
+Evento ev1 = new Evento("Semana Acadêmica IFRS", "Rio Grande", Evento.Tipo.Semana, 2020);
 
-No Windows, abra o instalador e não esqueça de selecionar todos os opcionais, como _adicionar code ao path_, _adicionar "abrir com code" ao menu_, etc.
+// atividades tem vagas e carga horária opcionais
+// tipo é um enum público declarado dentro da classe Atividade
+Atividade atv1 = ev1.novaAtividade("Seminário TCCs TADS", 40, Atividade.Tipo.Seminario);
+Atividade atv2 = ev1.novaAtividade("Minicurso ECMA6", 20, 8, Atividade.Tipo.Minicurso);
 
-No Linux, abra o arquivo `.deb` baixado no gerenciador de pacotes e instale normalmente conforme instruções de seu sistema operacional.
+// dados do evento
+System.out.println(ev1.getNome().equals("Semana Acadêmica IFRS"));
+System.out.println(ev1.getTipo().equals(Evento.Tipo.Semana));
+System.out.println(ev1.getCidade().equals("Rio Grande"));
+System.out.println(ev1.getAno() == 2020);
 
-Este _template_ possui uma pasta [.vscode](.vscode) com as extensões necessárias em [extensions.json](.vscode/extensions.json) e as configurações recomendadas em [settings.json](.vscode/settings.json). **Fique a vontade para alterá-los como achar melhor.**
+// evento tem atividades
+ArrayList<Atividade> atvs = ev1.getAtividades();
+System.out.println(atvs.size() == 2);
+System.out.println(atvs.get(0).equals(atv1));
+System.out.println(atvs.get(1).equals(atv2));
 
-A única extensão obrigatória é a _"vscjava.vscode-java-pack"_.
+// método para obter atividades pela ordem de inserção
+System.out.println(atvs.getAtividade(1).equals(atv1));
+System.out.println(atvs.getAtividade(2).equals(atv2));
 
-A extensão _"EditorConfig"_ é bastante recomendada. Ela funciona junto com o arquivo [.editorconfig](.editorconfig) presente neste _template_ para padronizar a formatação dos códigos-fonte.
+// dados das atividades
+System.out.println(atv1.getDescricao().equals("Seminário TCCs TADS"));
+System.out.println(atv1.getVagas() == 40);
+System.out.println(atv1.getTipo().equals(Atividade.Tipo.Seminario));
+System.out.println(atv1.getAno() == 202); // mesmo do evento
 
-Finalmente, se preferes o editor em Português, instale a seguinte extensão: _Portuguese (Brazil) Language Pack for Visual Studio Code_.
+// o minicurso tem carga horária
+System.out.println(atv2.getDescricao().equals("Minicurso ECMA6"));
+System.out.println(atv2.getVagas() == 20);
+System.out.println(atv2.getHoras() == 8);
+System.out.println(atv2.getTipo().equals(Atividade.Tipo.Minicurso));
 
-## Instalação e Configuração do Git
+// atividades pertencem a um evento
+System.out.println(atv1.getEvento().equals(ev1));
+System.out.println(atv2.getEvento().equals(ev1));
 
-O Git pode ser obtido para Windows neste link <https://git-scm.com/download/win>. A instalação é simples, como sempre não esqueça dos opcionais, principalmente a opção _adicionar o git ao path_.
+// outros tipo de eventos e atividades
+Evento ev2 = new Evento("Escola Regional de Banco de Dados", "Bagé", Evento.Tipo.Escola, 2021);
+Atividade atv3 = ev2.novaAtividade("BigData com Apache Hadoop", "Paulo Silva", 20, 4, Atividade.Tipo.Oficina);
+Atividade atv4 = ev2.novaAtividade("Data Science: uma introdução", "Maria Santos", Atividade.Tipo.Palestra);
 
-Para Debian, Ubuntu e derivados o comando `sudo apt install git` faz tudo.
+// dados da atividade:
+System.out.println(atv3.getDescricao().equals("BigData com Apache Hadoop"));
+System.out.println(atv3.getMinistrante().equals("Paulo Silva"));
+System.out.println(atv3.getVagas() == 20);
+System.out.println(atv3.getHoras() == 4);
+System.out.println(atv3.getTipo().equals(Atividade.Tipo.Oficina));
+System.out.println(atv3.getAno() == 2021);
 
-Para verificar a instalação abra o _prompt_ ou um terminal e execute `git --version`. Se não acusou _comando não encontrado_ é porque está tudo funcionando perfeitamente.
+// um evento que abriga (tem) outros eventos:
+Evento ev3 = new Evento("3º Salão de Pesquisa, Extensão e Ensino do IFRS", "Bento Gonçalves", Evento.Tipo.Salao, 2022);
+EventoSatelite sat1 = ev3.novoEventoSatelite("7º Seminário de Iniciação Científica e Tecnológica (SICT)", Evento.Tipo.Seminario);
+EventoSatelite sat2 = ev3.novoEventoSatelite("5º Seminário de Educação Profissional e Tecnológica (SEMEPT)", Evento.Tipo.Seminario);
+EventoSatelite sat3 = ev3.novoEventoSatelite("Mostra de Arte e Cultura", Evento.Tipo.Mostra);
 
-## Executando
+// eventos satélite são da mesma cidade do evento central
+System.out.println(ev3.getCidade().equals("Bento Gonçalves"));
+System.out.println(sat1.getCidade().equals(ev3.getCidade()));
+System.out.println(sat1.getCidade().equals("Bento Gonçalves"));
 
-Com tudo isto pronto deve ser possível abrir o arquivo [App.java](src/App.java) e clicar em `run` para executar o projeto. Se quiser fazê-lo manualmente, abra um terminal no Linux ou _prompt_ de comando no Windows, e na pasta raiz do projeto execute `javac -d bin src/App.java; java -cp bin App`, ou separados sendo primeiro `javac -d bin src/App.java` para compilar e depois `java -cp bin App` para executar.
+// eventos satélites pertencem a um evento central
+System.out.println(sat1.getEventoCentral().equals(ev3));
 
-## Testagem
+// satelites
+System.out.println(ev3.getEventosSatelites().size() == 3);
+System.out.println(ev3.getEventosSatelite(1).equals(sat1));
+System.out.println(ev3.getEventosSatelite(2).equals(sat2));
+System.out.println(ev3.getEventosSatelite(3).equals(sat3));
 
-O repositório está configurado para usar o JUnit como _framework_ para testagem (Testes Unitários). As bibliotecas estão disponíveis na pasta [lib](lib/).
+// inscrição nas atividades:
+System.out.println(atv1.getVagas() == 40);
+System.out.println(atv1.getVagasRemanescentes() == 40);
 
-Para executar os testes, abra o diretório [test](src/test/) e o teste que deseja executar, por exemplo [TestesSimples](src/test/TestesSimples.java). Clique em _run test_. Acompanhe os testes pela _sidebar_, ícone testes, logo abaixo de extensões.
+Inscrito insc1 = atv1.inscrever("Jean-Luc Picard");
+Inscrito insc2 = atv1.inscrever("Worf");
 
-## Code Conventions | Style Guide Checking
+// inscritos tem nome
+System.out.println(insc1.getNome().equals("Jean-Luc Picard"));
+System.out.println(insc2.toString().equals("Worf"));
 
-O repositório foi configurado para usar o [**CheckStyle**](https://checkstyle.sourceforge.io/) que é um _plugin_ para verificar a indentação, aparência do código e padrões de nomeação e organização, junto com uma [extensão do VSCode](https://marketplace.visualstudio.com/items?itemName=shengchen.vscode-checkstyle) para habilitá-lo.
+// as vagas decrescem
+System.out.println(atv1.getVagasRemanescentes() == 38);
 
-O padrão usado é o [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html) disponível em <https://google.github.io/styleguide/javaguide.html>.
+// a inscrição tem uma chave no formato AAAAAAAAAAAAAAAA até ZZZZZZZZZZZZZZZZ
+// aleatória, como: AGGASCFFEERERRER
+Chave insc1chave = insc1.getChave();
+System.out.println(insc1.getChave().toString().length() == 16);
 
-Portanto, códigos desalinhados e/ou em desacordo com estas regras de formação aparecerão com um sublinhado amarelo conhecido como _warning_ (não é um erro, é uma recomendação).
+// verificando se a chave está segundo as regras:
+for (int i = 0; i < insc1chave.toString().length(); i++) {
+  char c = insc1.getChave().toString().charAt(i);
+  System.out.println(c >= 65 && c <= 90); // A~Z
+}
+
+// as chaves não podem ser as mesmas, cada inscrito deve ter uma chave única
+System.out.println(insc1.getChave().equals(insc2.getChave()) == false);
+
+// por padrão cada inscrito não concluiu a atividade
+System.out.println(insc1.isConcluido() == false); // foi ao evento/atividade?
+
+// a atvidade tem inscritos
+ArrayList<Inscrito> inscritos = atv1.getInscritos();
+System.out.println(inscritos.get(0).equals(insc1));
+System.out.println(inscritos.get(1).equals(insc2));
+System.out.println(atv1.getInscrito(2).isConcluido() == false);
+
+// que confirmam presença (chamada)
+insc1.confirmarPresenca(); // marcar como concluído
+System.out.println(insc1.isConcluido() == true);
+System.out.println(atv1.getInscrito(1).isConcluido() == true);
+System.out.println(atv1.getInscrito(2).isConcluido() == false);
+atv1.getInscrito(2).confirmarPresenca();
+System.out.println(atv1.getInscrito(2).isConcluido() == true);
+
+// inscrevendo 38 klingons
+for (int i = 0; i < 38; i++) atv1.inscrever("Klingon #" + i);
+
+// atividade sem vagas abertas
+System.out.println(atv1.getVagasRemanescentes() == 0);
+
+// não é possível inscrever-se
+try {
+  atv1.inscrever("Data");
+  System.out.println(false); // esta linha não deve ser executada
+} catch (NaoHaVagaException e) { // criar esta classe NaoHaVagaException extends RuntimeException
+  System.err.println(true + " " + e); // Não há mais vagas!
+}
+
+// eventos satélite permitem inscrição
+sat1.inscrever("Geordi Laforge");
+
+// eles não tem limite de inscritos
+// e tem todas as propriedades que um inscrito em atividade
+System.out.println(sat1.getInscrito(1).getNome().equals("Geordi Laforge"));
+Inscrito insc3 = sat1.getInscrito(1);
+Chave chave3 = insc3.getChave();
+System.out.println(insc3 != null);
+System.out.println(chave3 != null);
+System.out.println(sat1.getQuantidadeInscritos() == 1);
+// esta atividade não tem limite de vagas nem carga horária
+System.out.println(atv4.getVagas() == 0);
+System.out.println(atv4.getHoras() == 0);
+System.out.println(atv4.getVagasRemanescentes() == 0);
+System.out.println(atv4.getTipo().equals(Atividade.Tipo.Palestra));
+// então não há limite de inscrições
+atv4.inscrever("Beverly Crusher");
+atv4.inscrever("Deanna Troi");
+System.out.println(atv4.getInscritos().size() == 2);
+System.out.println(atv4.getQuantidadeInscritos() == 2);
+```
+
+### Desenhar o Diagrama de Classes do Sistema Eventos/Atividades
+
+Com base nas classes anteriores efetua a engenharia reversa e desenhe o diagrama de classes, com atributos e associações, esclarecendo quais seriam as agregações e composições.
+
+### Sistema Torneio/Campeonato de <escolha>
+
+Imagine um sistema de torneio ou campeonato. Pode ser de esportes, e-sports ou outro. Modele o domínio, descobrindo as classes conceituais. Numa cópia adicione as associações e atributos. Na última cópia adicione os comportamentos/métodos. **Não é obrigatório implementar**. Mas _considere_.
+
+- - -
+
+> A good programmer looks both ways before crossing a one-way street.
+>
+> -- Unknown
