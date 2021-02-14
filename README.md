@@ -46,7 +46,7 @@ System.out.println(atvs.getAtividade(2).equals(atv2));
 System.out.println(atv1.getDescricao().equals("Seminário TCCs TADS"));
 System.out.println(atv1.getVagas() == 40);
 System.out.println(atv1.getTipo().equals(Atividade.Tipo.Seminario));
-System.out.println(atv1.getAno() == 202); // mesmo do evento
+System.out.println(atv1.getAno() == 2020); // mesmo do evento
 
 // o minicurso tem carga horária
 System.out.println(atv2.getDescricao().equals("Minicurso ECMA6"));
