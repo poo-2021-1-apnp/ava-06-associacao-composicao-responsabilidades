@@ -7,10 +7,9 @@ Link do Classroom: <https://classroom.github.com/a/rvkCD7Om>
 >
 > [A tutela cruel de Pai Mei](https://youtu.be/JOCe0isg_1E)
 
-
 ## Implementar e testar segundo as especificações
 
-- Esta atividade é avaliada com esforço estimado entre 6 e 12h.
+- O esforço estimado desta atividade está entre 6 e 12h.
 - Os Casos de Teste podem ser corrigidos se estiverem mal escritos, mas **a especificação dos objetos não pode ser alterada**.
 - E, por fim, assegure-se de **assistir as videoaulas antes de começar**, pois lá estão explicados todos os conceitos e práticas presentes nesta atividade.
 
