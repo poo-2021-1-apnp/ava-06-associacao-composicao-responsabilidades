@@ -1,6 +1,6 @@
 # Avaliação 06 Associação, Composição e Responsabilidades.
 
-Link do Classroom: <pendente>
+Link do Classroom: <https://classroom.github.com/a/rvkCD7Om>
 
 [O treinamento cruel de Pai Mei](https://youtu.be/JOCe0isg_1E)
 
@@ -87,9 +87,9 @@ System.out.println(sat1.getEventoCentral().equals(ev3));
 
 // satelites
 System.out.println(ev3.getEventosSatelites().size() == 3);
-System.out.println(ev3.getEventosSatelite(1).equals(sat1));
-System.out.println(ev3.getEventosSatelite(2).equals(sat2));
-System.out.println(ev3.getEventosSatelite(3).equals(sat3));
+System.out.println(ev3.getEventoSatelite(1).equals(sat1));
+System.out.println(ev3.getEventoSatelite(2).equals(sat2));
+System.out.println(ev3.getEventoSatelite(3).equals(sat3));
 
 // inscrição nas atividades:
 System.out.println(atv1.getVagas() == 40);
@@ -177,7 +177,7 @@ System.out.println(atv4.getQuantidadeInscritos() == 2);
 
 Com base nas classes anteriores efetua a engenharia reversa e desenhe o diagrama de classes, com atributos e associações, esclarecendo quais seriam as agregações e composições.
 
-### Sistema Torneio/Campeonato de <escolha>
+### Sistema Torneio/Campeonato de &lt;sua escolha&gt;
 
 Imagine um sistema de torneio ou campeonato. Pode ser de esportes, e-sports ou outro. Modele o domínio, descobrindo as classes conceituais. Numa cópia adicione as associações e atributos. Na última cópia adicione os comportamentos/métodos. **Não é obrigatório implementar**. Mas _considere_.
 
