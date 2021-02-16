@@ -11,6 +11,7 @@ Link do Classroom: <https://classroom.github.com/a/rvkCD7Om>
 
 - O esforço estimado desta atividade está entre 6 e 12h.
 - Os Casos de Teste podem ser corrigidos se estiverem mal escritos, mas **a especificação dos objetos não pode ser alterada**.
+- As classes do modelo devem ficar no pacote `model`.
 - E, por fim, assegure-se de **assistir as videoaulas antes de começar**, pois lá estão explicados todos os conceitos e práticas presentes nesta atividade.
 
 
@@ -113,7 +114,7 @@ Chave insc1chave = insc1.getChave();
 System.out.println(insc1.getChave().toString().length() == 16);
 
 // verificando se a chave está segundo as regras:
-for (int i = 0; i < insc1chave.toString().length(); i++) {
+for (int i = 0; i < 16; i++) {
   char c = insc1.getChave().toString().charAt(i);
   System.out.println(c >= 65 && c <= 90); // A~Z
 }
@@ -175,9 +176,13 @@ System.out.println(atv4.getInscritos().size() == 2);
 System.out.println(atv4.getQuantidadeInscritos() == 2);
 ```
 
+
+
 ### Desenhar o Diagrama de Classes do Sistema Eventos/Atividades
 
-Com base nas classes anteriores efetua a engenharia reversa e desenhe o diagrama de classes, com atributos e associações, esclarecendo quais seriam as agregações e composições.
+Com base nas classes anteriores efetua a _engenharia reversa_ e desenhe o diagrama de classes, com atributos e associações, esclarecendo quais seriam as agregações e composições.
+
+
 
 ### Sistema Torneio/Campeonato de &lt;sua escolha&gt;
 
