@@ -2,7 +2,10 @@
 
 Link do Classroom: <https://classroom.github.com/a/rvkCD7Om>
 
-[O treinamento cruel de Pai Mei](https://youtu.be/JOCe0isg_1E)
+> "Já que teu braço me pertence agora,
+> eu quero ele forte."
+>
+> [A tutela cruel de Pai Mei](https://youtu.be/JOCe0isg_1E)
 
 
 ## Implementar e testar segundo as especificações
