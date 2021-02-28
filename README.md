@@ -42,8 +42,10 @@ System.out.println(atvs.get(0).equals(atv1));
 System.out.println(atvs.get(1).equals(atv2));
 
 // método para obter atividades pela ordem de inserção
-System.out.println(atvs.getAtividade(1).equals(atv1));
-System.out.println(atvs.getAtividade(2).equals(atv2));
+// System.out.println(atvs.getAtividade(1).equals(atv1)); // PATCHED
+// System.out.println(atvs.getAtividade(2).equals(atv2)); // PATCHED
+System.out.println(ev1.getAtividade(1).equals(atv1));
+System.out.println(ev1.getAtividade(2).equals(atv2));
 
 // dados das atividades
 System.out.println(atv1.getDescricao().equals("Seminário TCCs TADS"));
